@@ -2,8 +2,7 @@ import pytest
 
 from board import Board, SquareMarking
 
-# @TODO
-# Compute board row definitions
+
 def test_board_with_valid_grid():
     squares = [
         [1, 0, 1],
@@ -149,3 +148,27 @@ def test_is_board_complete():
     test_board.mark_square(0, 2, SquareMarking.YES)
     test_board.mark_square(1, 1, SquareMarking.YES)
     assert test_board.is_board_complete() == True
+
+def test_board_row_definition():
+    squares = [
+        [1, 1, 0],
+        [0, 0, 1],
+        [1, 0, 1],
+    ]
+    test_board = Board(squares)
+
+    assert test_board.get_definition('row', 0) == [2]
+    assert test_board.get_definition('row', 1) == [1]
+    assert test_board.get_definition('row', 2) == [1, 1]
+
+def test_board_column_definition():
+    squares = [
+        [1, 1, 0],
+        [0, 0, 1],
+        [1, 0, 1],
+    ]
+    test_board = Board(squares)
+
+    assert test_board.get_definition('column', 0) == [1, 1]
+    assert test_board.get_definition('column', 1) == [1]
+    assert test_board.get_definition('column', 2) == [2]
