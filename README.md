@@ -1,0 +1,1 @@
+A Picross analyzer / solver / generator written in Python.
