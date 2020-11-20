@@ -1,9 +1,16 @@
 # TODO
+TESTS FOR IMAGE
+File path for image
+Image not found
+fps counter
+Text color
+Screen clear colour
 PyGame rendering engine
 Rendering loop
 Render board as text
-Render board as graphics
 User input
+Toggle metrics like FPS
+Render board as graphics
 Win game
 Board solver
 Generate winnable board

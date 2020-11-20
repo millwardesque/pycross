@@ -33,6 +33,12 @@ def test_clear_screen():
 
     assert engine.last_command() == { 'name': 'clear' }
 
+def test_flip_screen():
+    engine = MockRenderingEngine(320, 240)
+    Renderer(engine).flip()
+
+    assert engine.last_command() == { 'name': 'flip' }
+
 def test_drawing_static_image():
     test_img = Image('test-image')
     engine = MockRenderingEngine(320, 240)

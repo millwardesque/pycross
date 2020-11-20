@@ -13,6 +13,11 @@ class MockRenderingEngine(RenderingEngine):
             'name': 'clear'
         }
 
+    def flip(self):
+        self._last_command = {
+            'name': 'flip'
+        }
+
     def draw_static_image(self, img: Image, x: int, y: int):
         self._last_command = {
             'name': 'draw_static_image',
