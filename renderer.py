@@ -18,8 +18,8 @@ class Renderer:
     def clear(self):
         self.rendering_engine.clear()
 
-    def flip(self):
-        self.rendering_engine.flip()
+    def end_render(self):
+        self.rendering_engine.end_render()
 
     def draw_static_image(self, image: Image, x: int, y: int):
         self.rendering_engine.draw_static_image(image, x, y)
@@ -34,11 +34,12 @@ if __name__ == '__main__':
 
     renderer = Renderer(PygameRenderingEngine(320, 240))
     clock = pygame.time.Clock()
+    img = Image('intro_ball.gif', directory='assets')
     while 1:
         clock.tick()
 
         fps = round(clock.get_fps(), 2)
         renderer.clear()
         renderer.draw_text(f"FPS: {fps}", 5, 5)
-        renderer.draw_static_image(Image(os.path.join("assets", "intro_ball.gif")), 100, 100)
-        renderer.flip()
+        renderer.draw_static_image(img, 100, 100)
+        renderer.end_render()

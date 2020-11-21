@@ -1,4 +1,5 @@
 from image import Image
+import os
 from rendering_engine import RenderingEngine
 
 
@@ -13,12 +14,15 @@ class MockRenderingEngine(RenderingEngine):
             'name': 'clear'
         }
 
-    def flip(self):
+    def end_render(self):
         self._last_command = {
-            'name': 'flip'
+            'name': 'end_render'
         }
 
     def draw_static_image(self, img: Image, x: int, y: int):
+        if not os.path.isfile(img.full_path()):
+            raise ValueError(f"Image at {img.full_path()} doesn't exist")
+
         self._last_command = {
             'name': 'draw_static_image',
             'img': img,

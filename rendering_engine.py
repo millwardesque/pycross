@@ -21,7 +21,7 @@ class RenderingEngine:
     def clear(self):
         raise NotImplementedError("RenderingEngine base class doesn't implement this method")
 
-    def flip(self):
+    def end_render(self):
         raise NotImplementedError("RenderingEngine base class doesn't implement this method")
 
     def draw_static_image(self, img: Image, x: int, y: int):

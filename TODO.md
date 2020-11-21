@@ -1,10 +1,8 @@
 # TODO
-TESTS FOR IMAGE
-File path for image
-Image not found
 fps counter
 Text color
 Screen clear colour
+pygame rendering engine tests
 PyGame rendering engine
 Rendering loop
 Render board as text

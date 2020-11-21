@@ -33,14 +33,14 @@ def test_clear_screen():
 
     assert engine.last_command() == { 'name': 'clear' }
 
-def test_flip_screen():
+def test_end_render():
     engine = MockRenderingEngine(320, 240)
-    Renderer(engine).flip()
+    Renderer(engine).end_render()
 
-    assert engine.last_command() == { 'name': 'flip' }
+    assert engine.last_command() == { 'name': 'end_render' }
 
 def test_drawing_static_image():
-    test_img = Image('test-image')
+    test_img = Image('intro_ball.gif', directory='test_assets')
     engine = MockRenderingEngine(320, 240)
     renderer = Renderer(engine)
     renderer.draw_static_image(test_img, 5, 3)
@@ -64,3 +64,11 @@ def test_drawing_text():
         'x': 50,
         'y': 25,
     }
+
+def test_image_not_found():
+    missing_img = Image('test-image')
+    engine = MockRenderingEngine(320, 240)
+    renderer = Renderer(engine)
+
+    with pytest.raises(ValueError):
+        renderer.draw_static_image(missing_img, 5, 3)

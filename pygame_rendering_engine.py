@@ -19,6 +19,9 @@ class PygameRenderingEngine(RenderingEngine):
 
 
     def _load_image(self, image: Image):
+        if not os.path.isfile(img.full_path()):
+            raise ValueError(f"Image at {img.full_path()} doesn't exist")
+
         if image.name not in self._image_cache:
             self._image_cache[image.name()] = pygame.image.load(image.name())
 
@@ -27,7 +30,7 @@ class PygameRenderingEngine(RenderingEngine):
     def clear(self):
         self._screen.fill(pygame.Color("black"))
 
-    def flip(self):
+    def end_render(self):
         pygame.display.flip()
 
     def draw_static_image(self, img: Image, x: int, y: int):
