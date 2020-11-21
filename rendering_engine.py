@@ -5,6 +5,14 @@ class RenderingEngine:
     _width: int = None
     _height: int = None
 
+    def mock_engine(width: int, height: int):
+        from mock_rendering_engine import MockRenderingEngine
+        return MockRenderingEngine(width, height)
+
+    def pygame_engine(width: int, height: int):
+        from pygame_rendering_engine import PygameRenderingEngine
+        return PygameRenderingEngine(width, height)
+
     def __init__(self, width: int, height: int):
         if width < 1 or height < 1:
             raise ValueError(f"Width and height of screen must each be > 1: Provided dimensions: ({width}, {height})")

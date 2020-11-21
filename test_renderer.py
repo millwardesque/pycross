@@ -1,49 +1,49 @@
 import pytest
 
-from renderer import Renderer
-from mock_rendering_engine import MockRenderingEngine
+import renderer
+from rendering_engine import RenderingEngine
 from image import Image
 
 
 def test_create_renderer():
-    renderer = Renderer(MockRenderingEngine(320, 240))
-    assert renderer.width() == 320
-    assert renderer.height() == 240
+    r = renderer.Renderer(RenderingEngine.mock_engine(320, 240))
+    assert r.width() == 320
+    assert r.height() == 240
 
 def test_empty_rendering_engine():
     with pytest.raises(ValueError):
-        Renderer(None)
+        renderer.Renderer(None)
 
 def test_invalid_screen_size():
     with pytest.raises(ValueError):
-        Renderer(MockRenderingEngine(-1, 240))
+        renderer.Renderer(RenderingEngine.mock_engine(-1, 240))
 
     with pytest.raises(ValueError):
-        Renderer(MockRenderingEngine(0, 240))
+        renderer.Renderer(RenderingEngine.mock_engine(0, 240))
 
     with pytest.raises(ValueError):
-        Renderer(MockRenderingEngine(320, -1))
+        renderer.Renderer(RenderingEngine.mock_engine(320, -1))
 
     with pytest.raises(ValueError):
-        Renderer(MockRenderingEngine(320, 0))
+        renderer.Renderer(RenderingEngine.mock_engine(320, 0))
 
 def test_clear_screen():
-    engine = MockRenderingEngine(320, 240)
-    Renderer(engine).clear()
+    engine = RenderingEngine.mock_engine(320, 240)
+    renderer.Renderer(engine).clear()
 
     assert engine.last_command() == { 'name': 'clear' }
 
 def test_end_render():
-    engine = MockRenderingEngine(320, 240)
-    Renderer(engine).end_render()
+    engine = RenderingEngine.mock_engine(320, 240)
+    renderer.Renderer(engine).end_render()
 
     assert engine.last_command() == { 'name': 'end_render' }
 
 def test_drawing_static_image():
     test_img = Image('intro_ball.gif', directory='test_assets')
-    engine = MockRenderingEngine(320, 240)
-    renderer = Renderer(engine)
-    renderer.draw_static_image(test_img, 5, 3)
+    engine = RenderingEngine.mock_engine(320, 240)
+    r = renderer.Renderer(engine)
+    r.draw_static_image(test_img, 5, 3)
 
     assert engine.last_command() == {
         'name': 'draw_static_image',
@@ -54,9 +54,9 @@ def test_drawing_static_image():
 
 def test_drawing_text():
     text = 'Test text!'
-    engine = MockRenderingEngine(320, 240)
-    renderer = Renderer(engine)
-    renderer.draw_text(text, 50, 25)
+    engine = RenderingEngine.mock_engine(320, 240)
+    r = renderer.Renderer(engine)
+    r.draw_text(text, 50, 25)
 
     assert engine.last_command() == {
         'name': 'draw_text',
@@ -67,8 +67,8 @@ def test_drawing_text():
 
 def test_image_not_found():
     missing_img = Image('test-image')
-    engine = MockRenderingEngine(320, 240)
-    renderer = Renderer(engine)
+    engine = RenderingEngine.mock_engine(320, 240)
+    r = renderer.Renderer(engine)
 
     with pytest.raises(ValueError):
-        renderer.draw_static_image(missing_img, 5, 3)
+        r.draw_static_image(missing_img, 5, 3)
