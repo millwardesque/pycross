@@ -9,8 +9,8 @@ class PygameRenderingEngine(RenderingEngine):
     _image_cache: object
 
 
-    def __init__(self, width: int, height: int):
-        super().__init__(width, height)
+    def __init__(self, width: int, height: int, font_size: int):
+        super().__init__(width, height, font_size)
 
         pygame.init()
         self._screen = pygame.display.set_mode([width, height])

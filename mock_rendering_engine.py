@@ -6,8 +6,9 @@ from rendering_engine import RenderingEngine
 class MockRenderingEngine(RenderingEngine):
     _last_command: object = None
 
-    def __init__(self, width: int, height: int):
-        super().__init__(width, height)
+
+    def __init__(self, width: int, height: int, font_size: int):
+        super().__init__(width, height, font_size)
 
     def clear(self):
         self._last_command = {
