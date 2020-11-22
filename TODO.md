@@ -1,4 +1,5 @@
 # TODO
+[TEXT] Add definition rendering to overall board-rendering function
 [TEXT] Render row definitions right-justified
 [TEXT] Render column definitions bottom-justified
 [TEXT] Render grid

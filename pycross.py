@@ -19,7 +19,7 @@ class Pycross:
 
         squares = [
             [1, 0, 1],
-            [0, 1, 0],
+            [1, 1, 0],
         ]
         self._board = Board(squares)
 
@@ -43,5 +43,9 @@ class Pycross:
         self._renderer.draw_text(f"FPS: {fps}", 5, 5)
         self._board_renderer.render_row_definition(self._renderer, 5, 30, self._board, 0)
         self._board_renderer.render_row_definition(self._renderer, 5, 45, self._board, 1)
+
+        self._board_renderer.render_column_definition(self._renderer, 230, 5, self._board, 0)
+        self._board_renderer.render_column_definition(self._renderer, 245, 5, self._board, 1)
+        self._board_renderer.render_column_definition(self._renderer, 260, 5, self._board, 2)
 
         self._renderer.end_render()

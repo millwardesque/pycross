@@ -13,10 +13,13 @@ class TextBoardRenderer(BoardRendererInterface):
         row_def_str = self._row_definition_as_str(row_def)
         renderer.draw_text(row_def_str, x, y)
 
+    def render_column_definition(self, renderer: RenderingEngine, x: int, y: int, board: Board, column: int):
+        column_def = board.get_definition('column', column)
+        for i in column_def:
+            i_str = str(i)
+            renderer.draw_text(i_str, x, y)
+            y += renderer.get_text_height(i_str)
 
-    #def render_column_definition(self, renderer: Renderer, x: int, y: int, board: Board, column: int):
-    #    pass
-    #
     #def render_grid_unsolved(self, renderer: Renderer, x: int, y: int, board: Board):
     #    pass
     #
