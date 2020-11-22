@@ -26,8 +26,8 @@ class Renderer:
     def draw_static_image(self, image: Image, x: int, y: int):
         self._rendering_engine.draw_static_image(image, x, y)
 
-    def draw_text(self, text: str, x: int, y: int):
-        self._rendering_engine.draw_text(text, x, y)
+    def draw_text(self, text: str, x: int, y: int, color: list=None):
+        self._rendering_engine.draw_text(text, x, y, color)
 
     def rendering_engine(self):
         return self._rendering_engine
@@ -41,11 +41,12 @@ if __name__ == '__main__':
     renderer = Renderer(PygameRenderingEngine(320, 240))
     clock = pygame.time.Clock()
     img = Image('intro_ball.gif', directory='assets')
+    color = [255, 0, 0]
     while 1:
         clock.tick()
 
         fps = round(clock.get_fps(), 2)
         renderer.clear()
-        renderer.draw_text(f"FPS: {fps}", 5, 5)
+        renderer.draw_text(f"FPS: {fps}", 5, 5, color=color)
         renderer.draw_static_image(img, 100, 100)
         renderer.end_render()

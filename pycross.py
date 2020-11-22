@@ -6,11 +6,15 @@ from rendering_engine import RenderingEngine
 class Pycross:
     _renderer: Renderer = None
     _clock: pygame.time.Clock = None
-
+    _is_running: bool = False
 
     def initialize(self) -> None:
         self._renderer = Renderer(RenderingEngine.pygame_engine(320, 240))
         self._clock = pygame.time.Clock()
+        self._is_running = self.is_ready()
+
+    def is_running(self) -> bool:
+        return self._is_running
 
     def is_ready(self) -> bool:
         renderer_ready = self._renderer is not None

@@ -30,12 +30,13 @@ class MockRenderingEngine(RenderingEngine):
             'y': y,
         }
 
-    def draw_text(self, text: str, x: int, y: int):
+    def draw_text(self, text: str, x: int, y: int, color: list=None):
         self._last_command = {
             'name': 'draw_text',
             'text': text,
             'x': x,
             'y': y,
+            'color': color
         }
 
     def last_command(self) -> str:

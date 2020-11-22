@@ -4,5 +4,5 @@ from pycross import Pycross
 game = Pycross()
 game.initialize()
 
-while True:
+while game.is_running():
     game.run()

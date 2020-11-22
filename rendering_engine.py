@@ -35,5 +35,5 @@ class RenderingEngine:
     def draw_static_image(self, img: Image, x: int, y: int):
         raise NotImplementedError("RenderingEngine base class doesn't implement this method")
 
-    def draw_text(self, text: str, x: int, y: int):
+    def draw_text(self, text: str, x: int, y: int, color: list=None):
         raise NotImplementedError("RenderingEngine base class doesn't implement this method")

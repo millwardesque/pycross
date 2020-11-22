@@ -19,11 +19,11 @@ class PygameRenderingEngine(RenderingEngine):
 
 
     def _load_image(self, image: Image):
-        if not os.path.isfile(img.full_path()):
-            raise ValueError(f"Image at {img.full_path()} doesn't exist")
+        if not os.path.isfile(image.full_path()):
+            raise ValueError(f"Image at {image.full_path()} doesn't exist")
 
         if image.name not in self._image_cache:
-            self._image_cache[image.name()] = pygame.image.load(image.name())
+            self._image_cache[image.name()] = pygame.image.load(image.full_path())
 
         return self._image_cache[image.name()]
 
@@ -37,7 +37,10 @@ class PygameRenderingEngine(RenderingEngine):
         native_img = self._load_image(img)
         self._screen.blit(native_img, [x, y])
 
-    def draw_text(self, text: str, x: int, y: int):
-        text_surface = self._font.render(text, True, pygame.Color("white"))
+    def draw_text(self, text: str, x: int, y: int, color: list=None):
+        if color is None:
+            color = [255, 255, 255]
+
+        text_surface = self._font.render(text, True, color)
         self._screen.blit(text_surface, [x, y])
 
