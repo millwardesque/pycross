@@ -47,4 +47,13 @@ class RenderingEngine(metaclass=abc.ABCMeta):
 
     @abc.abstractmethod
     def draw_text(self, text: str, x: int, y: int, color: list=None):
-        raise NotImplementedError("RenderingEngine base class doesn't implement this method")
+        pass
+
+    @abc.abstractmethod
+    def get_text_width(self, text, render_horizontal: bool=True):
+        pass
+
+    @abc.abstractmethod
+    def get_text_height(self, text, render_horizontal: bool=True):
+        pass
+

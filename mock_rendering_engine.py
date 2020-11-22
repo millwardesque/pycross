@@ -40,5 +40,17 @@ class MockRenderingEngine(RenderingEngine):
             'color': color
         }
 
+    def get_text_width(self, text, render_horizontal: bool=True):
+        if render_horizontal:
+            return self.font_size * len(text)
+        else:
+            return self.font_size
+
+    def get_text_height(self, text, render_horizontal: bool=True):
+        if render_horizontal:
+            return self.font_size
+        else:
+            return self.font_size * len(text)
+
     def last_command(self) -> str:
         return self._last_command

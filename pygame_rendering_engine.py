@@ -44,3 +44,24 @@ class PygameRenderingEngine(RenderingEngine):
         text_surface = self._font.render(text, True, color)
         self._screen.blit(text_surface, [x, y])
 
+    def get_text_width(self, text, render_horizontal: bool=True):
+        if render_horizontal:
+            return self._font.size(text)[0]
+        else:
+            max_width = 0
+            for c in text:
+                width = self._font.size(c)[0]
+                if width > max_width:
+                    max_width = width
+
+            return max_width
+
+    def get_text_height(self, text, render_horizontal: bool=True):
+        if render_horizontal:
+            return self._font.size(text)[1]
+        else:
+            total_height = 0
+            for c in text:
+                total_height += self._font.size(c)[1]
+
+            return total_height

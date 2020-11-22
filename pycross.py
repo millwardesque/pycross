@@ -1,18 +1,21 @@
 import pygame
 
 from board import Board
+from board_renderer import BoardRendererInterface
 from rendering_engine import RenderingEngine
-
+from text_board_renderer import TextBoardRenderer
 
 class Pycross:
     _renderer: RenderingEngine = None
     _clock: pygame.time.Clock = None
     _is_running: bool = False
     _board: Board = None
+    _board_renderer: BoardRendererInterface = None
 
     def initialize(self) -> None:
-        self._renderer = RenderingEngine.pygame_engine(320, 240, 14)
+        self._renderer = RenderingEngine.pygame_engine(640, 480, 14)
         self._clock = pygame.time.Clock()
+        self._board_renderer = TextBoardRenderer()
 
         squares = [
             [1, 0, 1],
@@ -38,4 +41,7 @@ class Pycross:
 
         self._renderer.clear()
         self._renderer.draw_text(f"FPS: {fps}", 5, 5)
+        self._board_renderer.render_row_definition(self._renderer, 5, 30, self._board, 0)
+        self._board_renderer.render_row_definition(self._renderer, 5, 45, self._board, 1)
+
         self._renderer.end_render()

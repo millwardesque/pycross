@@ -1,8 +1,11 @@
 # TODO
-Calculate renderered width of string
-Calculate renderered height of string
+[TEXT] Render row definitions right-justified
+[TEXT] Render column definitions bottom-justified
+[TEXT] Render grid
+[TEXT] Render revealed grid
+[TEXT] Render markings
+[TEXT] Render board as text
 Test pygame_rendering_engine properly
-Render board as text
 Default font size
 User input
 Toggle metrics like FPS
