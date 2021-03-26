@@ -1,12 +1,10 @@
 # TODO
-[TEXT] Add definition rendering to overall board-rendering function
-[TEXT] Render row definitions right-justified
-[TEXT] Render column definitions bottom-justified
+[TEXT] BUG: Render column definitions bottom-justified
 [TEXT] Render grid
 [TEXT] Render revealed grid
 [TEXT] Render markings
 [TEXT] Render board as text
-Test pygame_rendering_engine properly
+[TEXT] Space out column definitions (horizontally) and row definitions (vertically)
 Default font size
 User input
 Toggle metrics like FPS
@@ -14,3 +12,4 @@ Render board as graphics
 Win game
 Board solver
 Generate winnable board
+Better test coverage for pygame_rendering_engine
